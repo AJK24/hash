@@ -29,9 +29,19 @@ function betterHash(string) {
 }
 
 
-function put(data) {
- var pos = this.simpleHash(data);
- this.table[pos] = data;
+function put(key, data) {
+	var pos = this.betterHash(key);
+	if (this.table[pos] === undefined) {
+		this.table[pos] = key;
+		this.values[pos] = data;
+	}
+	else {
+		while (this.table[pos] !== undefined) {
+			pos++;
+		}
+		this.table[pos] = key;
+		this.values[pos] = data;
+	}
 }
 
 function showDistro() {
