@@ -69,11 +69,11 @@ function get(key) {
 	if (this.table[pos][index] == key) {
 		return this.table[pos][index+1];
 	}
-	else {
-		while (this.table[pos][index] != key) {
-			index += 2;
-		}
+	else if(this.table[pos][index] != key){
+
+		index += 2;
 		return this.table[pos][index+1];
+
 	}
 	return undefined;
 }
